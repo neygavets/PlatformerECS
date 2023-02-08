@@ -1,2 +1,2 @@
 # PlatformerECS
- Pet project
+Проект-эксперимент по переводу платформера на ESC, используя LeoECS.
