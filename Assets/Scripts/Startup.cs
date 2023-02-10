@@ -38,6 +38,7 @@ sealed class Startup : MonoBehaviour {
 		fixedSystems
 			.Add (new CheckGroundSystem ())
 			.Add (new CheckFallingSystem())
+			.Add (new ChangeAxisSystem ())
 			.Add (new HorizontalMoveSystem ())
 			.Add (new VerticalMoveSystem ())
 			.Add (new DirectionSystem ())

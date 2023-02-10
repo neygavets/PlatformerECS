@@ -49,14 +49,13 @@ namespace Movements {
 						entity.Get<Rigidbody2DLink> ().Value.gravityScale = 1;
 				}
 			}
-
-
 		}
 
 		private void SetState ( ref EcsEntity entity, Transform ledgePoint, ref GameObject gameObject ) {
 			entity.Del<FreeMovingFlag> ();
 			entity.Del<HorizontalMovingFlag> ();
 			entity.Del<FallingFlag> ();
+			entity.Del<GroundedFlag> ();
 			entity.Get<GrabLedgeAnimationFlag> ();
 			entity.Get<GrabLedgeStateFlag> ();
 
