@@ -1,9 +1,15 @@
 using Cinemachine;
+using Enemies;
 using Spawners;
+using Traps;
 using UnityEngine;
 
 public class SceneData : MonoBehaviour {
 	public CinemachineBrain cinemachineBrain;
-	public PrefabFactory Factory;
-	public Transform SpawnPlayerPosition;
+	public PrefabFactory factory;
+	public CharacterInfo playerInfo;
+	public CharacterInfo enemyInfo;
+	public Transform spawnPlayerPosition;
+	public EnemyPoint[] spawnEnemyPoints;
+	public TrapPoint[] spawnTrapPoints;
 }

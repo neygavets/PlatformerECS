@@ -3,6 +3,7 @@ using UnityEngine;
 using Common;
 using Spawners;
 using Movements;
+using Combat;
 
 namespace Input {
 	sealed class PlayerInputSystem : IEcsInitSystem, IEcsRunSystem {
@@ -52,6 +53,9 @@ namespace Input {
 
 				if (inputEntity.Has<DuckInputEvent> ())
 					playerEntity.Get<DuckAction> ();
+
+				if (inputEntity.Has<AttackInputEvent> ())
+					playerEntity.Get<AttackAction> ();
 			}
 
 			inputEntity.Del<MovePerformedInputEvent> ();
@@ -60,6 +64,7 @@ namespace Input {
 			inputEntity.Del<JumpInputEvent> ();
 			inputEntity.Del<DashInputEvent> ();
 			inputEntity.Del<DuckInputEvent> ();
+			inputEntity.Del<AttackInputEvent> ();
 		}
 	}
 }

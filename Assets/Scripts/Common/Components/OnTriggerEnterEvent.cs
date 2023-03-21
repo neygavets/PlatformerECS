@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace Common {
 	public struct OnTriggerEnterEvent {
-		public GameObject Sender;
-		public Collider Collider;
+		public Collider2D Value;
 	}
 }

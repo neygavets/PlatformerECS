@@ -12,5 +12,5 @@ public static class AnimationLib {
 	public static int GrabStair = Animator.StringToHash ("isGrabStair");
 	public static int Landing = Animator.StringToHash ("Landing");
 	public static int MeleeAttack = Animator.StringToHash ("MeleeAttack");
-	public static int RangedAttack = Animator.StringToHash ("RangedAttack");
+	public static int RangeAttack = Animator.StringToHash ("RangeAttack");
 }

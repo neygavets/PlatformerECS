@@ -18,6 +18,8 @@ namespace Input {
 			duckAction.performed += ( InputAction.CallbackContext value ) => entity.Get<DuckInputEvent> ();
 			InputAction dashAction = playerInput.currentActionMap.FindAction ("Dash");
 			dashAction.performed += ( InputAction.CallbackContext value ) => entity.Get<DashInputEvent> ();
+			InputAction fireAction = playerInput.currentActionMap.FindAction ("Attack");
+			fireAction.performed += ( InputAction.CallbackContext value ) => entity.Get<AttackInputEvent> ();
 		}
 	}
 }

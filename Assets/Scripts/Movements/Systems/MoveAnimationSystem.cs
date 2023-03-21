@@ -5,18 +5,18 @@ using UnityEngine;
 namespace Movements {
 	sealed class MoveAnimationSystem : IEcsRunSystem {
 		// auto-injected fields.
-		private EcsFilter<HorizontalSpeedAnimation, AnimatorLink> horizontalSpeedFilter = null;
-		private EcsFilter<VerticalSpeedAnimation, AnimatorLink> verticalSpeedFilter = null;
-		private EcsFilter<DuckEnterAnimationFlag, AnimatorLink> duckEnterFilter = null;
-		private EcsFilter<DuckExitAnimationFlag, AnimatorLink> duckExitFilter = null;
-		private EcsFilter<JumpAnimationFlag, AnimatorLink> jumpFilter = null;
-		private EcsFilter<FallingAnimationFlag, AnimatorLink> fallingFilter = null;
-		private EcsFilter<DashAnimationFlag, AnimatorLink> dashFilter = null;
-		private EcsFilter<GrabLedgeAnimationFlag, AnimatorLink> grabLedgeFilter = null;
-		private EcsFilter<GrabStairEnterAnimationFlag, AnimatorLink> grabStairEnterFilter = null;
-		private EcsFilter<GrabStairExitAnimationFlag, AnimatorLink> grabStairExitFilter = null;
-		private EcsFilter<PullUpAnimationFlag, AnimatorLink> pullUpFilter = null;
-		private EcsFilter<LandingAnimationFlag, AnimatorLink> landingFilter = null;
+		private EcsFilter<HorizontalSpeedAnimation> horizontalSpeedFilter = null;
+		private EcsFilter<VerticalSpeedAnimation> verticalSpeedFilter = null;
+		private EcsFilter<DuckEnterAnimationFlag> duckEnterFilter = null;
+		private EcsFilter<DuckExitAnimationFlag> duckExitFilter = null;
+		private EcsFilter<JumpAnimationFlag> jumpFilter = null;
+		private EcsFilter<FallingAnimationFlag> fallingFilter = null;
+		private EcsFilter<DashAnimationFlag> dashFilter = null;
+		private EcsFilter<GrabLedgeAnimationFlag> grabLedgeFilter = null;
+		private EcsFilter<GrabStairEnterAnimationFlag> grabStairEnterFilter = null;
+		private EcsFilter<GrabStairExitAnimationFlag> grabStairExitFilter = null;
+		private EcsFilter<PullUpAnimationFlag> pullUpFilter = null;
+		private EcsFilter<LandingAnimationFlag> landingFilter = null;
 
 		void IEcsRunSystem.Run () {
 			foreach (int i in horizontalSpeedFilter) {

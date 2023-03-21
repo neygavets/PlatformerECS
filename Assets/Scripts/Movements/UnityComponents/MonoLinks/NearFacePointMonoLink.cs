@@ -4,8 +4,7 @@ using UnityEngine;
 
 namespace Movements {
 	public class NearFacePointMonoLink : MonoLink<NearFacePointLink> {
-		[SerializeField]
-		Transform pointTransform;
+		[SerializeField] Transform pointTransform;
 
 		public override void Make ( ref EcsEntity entity ) {
 			entity.Get<NearFacePointLink> () = new NearFacePointLink {

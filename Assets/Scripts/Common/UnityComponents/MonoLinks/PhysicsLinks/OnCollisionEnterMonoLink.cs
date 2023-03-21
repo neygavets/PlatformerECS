@@ -2,12 +2,11 @@ using Leopotam.Ecs;
 using UnityEngine;
 
 namespace Common {
-	[RequireComponent (typeof (Collider))]
+	[RequireComponent (typeof (Collider2D))]
 	public class OnCollisionEnterMonoLink : PhysicsLinkBase {
-		public void OnCollisionEnter ( Collision other ) {
+		void OnCollisionEnter2D ( Collision2D other ) {
 			entity.Get<OnCollisionEnterEvent> () = new OnCollisionEnterEvent {
-				Collision = other,
-				Sender = gameObject
+				Value = other,
 			};
 		}
 	}

@@ -4,6 +4,10 @@ using Common;
 using Input;
 using Movements;
 using Spawners;
+using Combat;
+using Enemies;
+using Traps;
+using Service;
 
 sealed class Startup : MonoBehaviour {
 	[SerializeField]
@@ -20,6 +24,8 @@ sealed class Startup : MonoBehaviour {
 		systems = new EcsSystems (world);
 		fixedSystems = new EcsSystems (world);
 
+		PreferencesService preferencesService = new PreferencesService ();
+
 #if UNITY_EDITOR
 		Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create (world);
 		Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create (systems);
@@ -27,12 +33,25 @@ sealed class Startup : MonoBehaviour {
 #endif
 		systems
 			.Add (new PlayerInputSystem ())
-			.Add (new SpawnPlayer ())
-			.Add (new SpawnSystem ())
-			.Add (new CameraTargetsSystem ())
+			.Add (new SpawnPlayerSystem ())
+			.Add (new SpawnEnemiesSystem ())
+			.Add (new SpawnTrapsSystem ())
+			.Add (new SpawnPrefabSystem ())
+			.Add (new SpawnWeaponSystem ())
+			.Add (new CameraTargetsSystem ())			
 			.Add (new MoveAnimationSystem ())
+			.Add (new ShootSystem ())			
+			.Add (new MeleeAttackSystem ())
+			.Add (new ProjectileHitSystem ())
+			.Add (new TrapHitSystem ())
+			.Add (new CombatAnimationSystem ())			
+			.Add (new CooldownSystem ())
+			.Add (new DamageSystem ())
+			.Add (new DeadEnemySystem ())
+			.Add (new DeadPlayerSystem ())
 			.Inject (staticData)
 			.Inject (sceneData)
+			.Inject (preferencesService)
 			.Init ();
 
 		fixedSystems
@@ -47,6 +66,7 @@ sealed class Startup : MonoBehaviour {
 			.Add (new DashSystem ())
 			.Add (new GrabLedgeSystem ())
 			.Add (new GrabStairSystem ())
+			.Add (new SpawnProjectileSystem ())
 			.Init ();
 	}
 

@@ -4,10 +4,8 @@ using UnityEngine;
 
 namespace Movements {
 	public class LedgePointsMonoLink : MonoLink<LedgePointsLink> {
-		[SerializeField]
-		Transform pointBefore;
-		[SerializeField]
-		Transform pointBehind;
+		[SerializeField] Transform pointBefore;
+		[SerializeField] Transform pointBehind;
 
 		public override void Make ( ref EcsEntity entity ) {
 			entity.Get<LedgePointsLink> () = new LedgePointsLink {

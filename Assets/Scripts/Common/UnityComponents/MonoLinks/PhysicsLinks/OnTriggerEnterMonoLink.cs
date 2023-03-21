@@ -2,12 +2,11 @@ using Leopotam.Ecs;
 using UnityEngine;
 
 namespace Common {
-	[RequireComponent (typeof (Collider))]
+	[RequireComponent (typeof (Collider2D))]
 	public class OnTriggerEnterMonoLink : PhysicsLinkBase {
-		private void OnTriggerEnter ( Collider other ) {
+		void OnTriggerEnter2D ( Collider2D other ) {
 			entity.Get<OnTriggerEnterEvent> () = new OnTriggerEnterEvent () {
-				Collider = other,
-				Sender = gameObject
+				Value = other,
 			};
 		}
 	}
