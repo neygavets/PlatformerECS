@@ -1,5 +1,5 @@
 using Cinemachine;
-using Enemies;
+using Characters;
 using Spawners;
 using Traps;
 using UnityEngine;

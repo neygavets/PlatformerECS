@@ -36,6 +36,7 @@ namespace Combat {
                 projectileEntity.Get<ProjectileFlag> ();                
                 projectileEntity.Get<ObjectFromPool> () = new ObjectFromPool { ParentPool = weapon.Get<ProjectilePoolLink> ().Value };
                 projectileEntity.Get<Damage> () = new Damage { Value = weapon.Get<Attack> ().Damage };                
+                projectileEntity.Get<RangeAttackPower> () = new RangeAttackPower { Value = entity.Get<RangeAttackPower> ().Value };                
 
                 weapon.Get<Cooldown> () = new Cooldown { Value = weapon.Get<CooldownCharacteristic> ().Value };
             }

@@ -1,8 +1,8 @@
 using UnityEngine;
+using Leopotam.Ecs;
 
 namespace Combat {
     public struct TakeWeapon {
-        public WeaponData Data;
-        public Transform LinkPoint;
+        public WeaponData Value;
     }
 }

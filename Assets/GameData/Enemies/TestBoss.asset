@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: TestBoss
   m_EditorClassIdentifier: 
   prefab: {fileID: 2756571252288089338, guid: ae9302ae3af3cb44da1d7f58b89c8456, type: 3}
-  health: 300
+  weapon: {fileID: 11400000, guid: 86381be1e88273c49b588d64c00b1b37, type: 2}
+  stamina: 20
+  strength: 10
+  agility: 10
+  intellect: 10
+  armor: 20
   isBoss: 1

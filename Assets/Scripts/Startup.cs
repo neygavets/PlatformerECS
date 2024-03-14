@@ -5,13 +5,13 @@ using Input;
 using Movements;
 using Spawners;
 using Combat;
-using Enemies;
+using Characters;
 using Traps;
 using Service;
 
 sealed class Startup : MonoBehaviour {
 	[SerializeField]
-	private StaticData staticData;
+	private GameData staticData;
 	[SerializeField]
 	private SceneData sceneData;
 
@@ -24,7 +24,8 @@ sealed class Startup : MonoBehaviour {
 		systems = new EcsSystems (world);
 		fixedSystems = new EcsSystems (world);
 
-		PreferencesService preferencesService = new PreferencesService ();
+		PreferencesService preferencesService = new (staticData.Player);
+		preferencesService.LoadPlayerData ();
 
 #if UNITY_EDITOR
 		Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create (world);

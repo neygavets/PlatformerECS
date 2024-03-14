@@ -11,24 +11,38 @@ namespace Spawners {
 
 		public void Run () {
 			foreach (int index in spawnFilter) {
-				ref EcsEntity parentEntity = ref spawnFilter.GetEntity (index);
-				WeaponData data = parentEntity.Get<TakeWeapon> ().Data;
-				Transform linkPoint = parentEntity.Get<TakeWeapon> ().LinkPoint;
+				EcsEntity parent = spawnFilter.GetEntity (index);
+				WeaponData data = parent.Get<TakeWeapon>().Value;				
+				Transform linkPoint = parent.Get<HandGrabPointsLink> ().Right;
 				EcsEntity weapon = world.NewEntity ();
-				weapon.Get<Owner> () = new Owner { Value = parentEntity };
+				weapon.Get<Owner> () = new Owner { Value = parent };
 				weapon.Get<SpawnPrefab> () = new SpawnPrefab {
 					Prefab = data.Prefab,
 					Position = linkPoint.position,
 					Rotation = Quaternion.identity,
 					Parent = linkPoint
 				};
+				// Для парного оружия создаем второе оружие и связываем его с основным
+				if (data.WeaponTypeByGrab == WeaponTypesByGrab.Paired) {
+					EcsEntity secondWeapon = world.NewEntity ();
+					linkPoint = parent.Get<HandGrabPointsLink> ().Left;
+					secondWeapon.Get<SpawnPrefab> () = new SpawnPrefab {
+						Prefab = data.Prefab,
+						Position = linkPoint.position,
+						Rotation = Quaternion.identity,
+						Parent = linkPoint
+					};
+					weapon.Get<SecondWeapon> () = new SecondWeapon { Value = secondWeapon };
+				}
+
 				weapon.Get<Attack> () = new Attack { Min = data.MinDamage, Max = data.MaxDamage };
 				weapon.Get<CooldownCharacteristic> () = new CooldownCharacteristic { Value = data.Cooldown };
-				if (data.WeaponType == WeaponTypes.Melee)
-					parentEntity.Get<HasMeleeWeapon> ().Weapon = weapon;
-				if (data.WeaponType == WeaponTypes.Range)
-					parentEntity.Get<HasRangeWeapon> ().Weapon = weapon;
-				parentEntity.Del<TakeWeapon> ();
+				if (data.WeaponTypeByRange == WeaponTypesByRange.Melee)
+					parent.Get<HasMeleeWeapon> ().Weapon = weapon;
+				if (data.WeaponTypeByRange == WeaponTypesByRange.Range)
+					parent.Get<HasRangeWeapon> ().Weapon = weapon;
+
+				spawnFilter.GetEntity(index).Del<TakeWeapon> ();
 			}
 		}
 	}

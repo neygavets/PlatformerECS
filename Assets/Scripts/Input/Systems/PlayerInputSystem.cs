@@ -4,12 +4,13 @@ using Common;
 using Spawners;
 using Movements;
 using Combat;
+using Characters;
 
 namespace Input {
 	sealed class PlayerInputSystem : IEcsInitSystem, IEcsRunSystem {
 		// auto-injected fields.
 		private EcsWorld world = null;
-		private StaticData staticData;
+		private GameData staticData;
 		private EcsFilter<PlayerFlag> playerFilter = null;
 		private EcsFilter<InputFlag> inputFilter = null;
 

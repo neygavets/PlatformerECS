@@ -1,8 +1,10 @@
 using Combat;
-using Enemies;
+using Common;
+using Characters;
 using Leopotam.Ecs;
 using Movements;
 using UnityEngine;
+using Utils;
 
 namespace Spawners {
     sealed class SpawnEnemiesSystem : IEcsInitSystem {
@@ -21,9 +23,15 @@ namespace Spawners {
 					Rotation = Quaternion.identity,
 					Parent = null
 				};
-				enemy.Get<EnemyFlag> ();									
-				enemy.Get<Health> () = new Health { Current = enemyPoint.Data.Health, Max = enemyPoint.Data.Health };
+				enemy.Get<EnemyFlag> ();
 				enemy.Get<Directed> ();
+				enemy.Get<MeleeAttackPower> () = new MeleeAttackPower { Value = Mechanic—alculator.AttackPower (enemyPoint.Data.Strength, enemyPoint.Data.Agility) };
+				enemy.Get<RangeAttackPower> () = new RangeAttackPower { Value = Mechanic—alculator.AttackPower (enemyPoint.Data.Agility, enemyPoint.Data.Strength) };
+				int health = Mechanic—alculator.StaminaToHealth (enemyPoint.Data.Stamina);
+				enemy.Get<Health> () = new Health { Current = health, Max = health };
+				enemy.Get<Armor> ().Value = enemyPoint.Data.Armor;
+				if (enemyPoint.Data.Weapon != null)
+					enemy.Get<TakeWeapon> () = new TakeWeapon { Value = enemyPoint.Data.Weapon };
 				if (enemyPoint.Data.IsBoss) {
 					enemy.Get<EnemyBossFlag> ();
 					sceneData.enemyInfo.LinkEntity (enemy);

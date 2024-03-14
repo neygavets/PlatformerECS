@@ -1,7 +1,7 @@
 using UnityEngine;
 using Leopotam.Ecs;
 using Common;
-using Enemies;
+using Characters;
 
 public static class LayerMasks  {
 	public static LayerMask Wall = LayerMask.GetMask ("Wall");
