@@ -1,5 +1,6 @@
 using Combat;
 using Common;
+using GameLogic.UnityComponents;
 using Leopotam.Ecs;
 using Traps;
 using UnityEngine;

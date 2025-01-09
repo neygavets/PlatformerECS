@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644369234836088867}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6155471268096746275}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4368273387731618697
 MonoBehaviour:
@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4a8ba6b674be643822426b334f155b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToPool: {fileID: 8519342887578149700, guid: 475b446ade5c6e24188cffce7508c5d4,
+  _objectToPool: {fileID: 8519342887578149700, guid: 475b446ade5c6e24188cffce7508c5d4,
     type: 3}
-  amountToPool: 5
+  _amountToPool: 10
 --- !u!1 &2140265551796840850
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,13 +70,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2140265551796840850}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.34, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6155471268096746275}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4097071030445935797
 GameObject:
@@ -101,13 +101,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4097071030445935797}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.8, y: 0.025, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2851025691814496960}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5466276765838934899
 GameObject:
@@ -132,13 +132,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5466276765838934899}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2, y: 0.025, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2851025691814496960}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8069351938502896671
 GameObject:
@@ -168,6 +168,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8069351938502896671}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -177,7 +178,6 @@ Transform:
   - {fileID: 6106681802554791228}
   - {fileID: 2427796867515682259}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7022602357511987689
 MonoBehaviour:
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f19e134263835f4dadc606983630567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 8681703749300931774}
+  _animator: {fileID: 8681703749300931774}
 --- !u!114 &1387977492094321451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fae2ff01554f729448f2aacdb5a4485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectPool: {fileID: 4368273387731618697}
+  _objectPool: {fileID: 4368273387731618697}
 --- !u!114 &5536835685509549524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,12 +241,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d58abe298d04a943b4ff5fa9d7ee78b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkPoint: {fileID: 2427796867515682259}
+  _linkPoint: {fileID: 2427796867515682259}
 --- !u!1001 &820196219527386253
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 6155471268096746275}
     m_Modifications:
     - target: {fileID: -8822183663704760645, guid: d1b312ffba2fba14ebd82b47a65f9f60,
@@ -263,6 +264,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Bounds.m_Extent.y
       value: 0.039723005
+      objectReference: {fileID: 0}
+    - target: {fileID: -6321739728879480704, guid: d1b312ffba2fba14ebd82b47a65f9f60,
+        type: 3}
+      propertyPath: m_labelHash
+      value: 0.00018008747
+      objectReference: {fileID: 0}
+    - target: {fileID: -6321739728879480704, guid: d1b312ffba2fba14ebd82b47a65f9f60,
+        type: 3}
+      propertyPath: m_CategoryHash
+      value: 3.7875956e-22
       objectReference: {fileID: 0}
     - target: {fileID: -5590699068449917207, guid: d1b312ffba2fba14ebd82b47a65f9f60,
         type: 3}
@@ -511,6 +522,21 @@ PrefabInstance:
       value: 0.043870665
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3238383760333463117, guid: d1b312ffba2fba14ebd82b47a65f9f60,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7812970980782278418}
+    - targetCorrespondingSourceObject: {fileID: 3238383760333463117, guid: d1b312ffba2fba14ebd82b47a65f9f60,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8375095471112359500}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -138723010975453577, guid: d1b312ffba2fba14ebd82b47a65f9f60,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8681703749300931774}
   m_SourcePrefab: {fileID: -1355319582609692413, guid: d1b312ffba2fba14ebd82b47a65f9f60,
     type: 3}
 --- !u!4 &2851025691814496960 stripped
@@ -533,7 +559,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &8681703749300931774
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -550,4 +576,5 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

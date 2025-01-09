@@ -1,17 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace Characters {
-	public class PatrolPoint : EnemyPoint {
-		[SerializeField] Transform endPoint;
+namespace GameLogic.UnityComponents
+{
+	public class PatrolPoint : EnemyPoint
+	{
+		[SerializeField]
+		private Transform _endPoint;
 
 #if UNITY_EDITOR
-		protected override void Visualization () {
+		protected override void Visualization ()
+		{
 			base.Visualization ();
-			Handles.DrawSolidDisc (endPoint.position, Vector3.forward, 0.5f);
-			Handles.Label (endPoint.position, "end point of patrol");
+			Handles.DrawSolidDisc (_endPoint.position, Vector3.forward, 0.5f);
+			Handles.Label (_endPoint.position, "end point of patrol");
 		}
 #endif
 	}

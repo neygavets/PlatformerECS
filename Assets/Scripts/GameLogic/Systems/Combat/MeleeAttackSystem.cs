@@ -1,5 +1,6 @@
 using Characters;
 using Common;
+using GameLogic.UnityComponents;
 using Leopotam.Ecs;
 using Spawners;
 using UnityEngine;

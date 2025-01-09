@@ -1,3 +1,4 @@
+using GameLogic.UnityComponents;
 using Leopotam.Ecs;
 
 namespace Spawners {

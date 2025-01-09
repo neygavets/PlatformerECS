@@ -1,20 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace Characters {
+namespace GameLogic.UnityComponents
+{
 
-	public class GuardPoint : EnemyPoint {
-		[SerializeField] bool flippedToLeft;
+	public class GuardPoint : EnemyPoint
+	{
+		[SerializeField]
+		private bool _flippedToLeft;
 
-		public float Direction { 
-			get => flippedToLeft ? -1 : 1;
+		public float Direction
+		{
+			get => _flippedToLeft ? -1 : 1;
 		}
 
 #if UNITY_EDITOR
-		protected override void Visualization () {
-			base.Visualization();
+		protected override void Visualization ()
+		{
+			base.Visualization ();
 			float angle = 45.0f;
 			Vector3 origin = transform.position;
 			Vector3 posUp = origin + (Quaternion.Euler (0, 0, angle * 0.5f) * Vector3.right * Direction);

@@ -1,7 +1,7 @@
 using Combat;
 using Common;
+using GameLogic.UnityComponents;
 using Leopotam.Ecs;
-using UnityEngine;
 
 namespace Traps {
 	sealed class TrapHitSystem : IEcsRunSystem {

@@ -1,19 +1,27 @@
-namespace Utils {
-    public static class Mechanic�alculator {
-        public static int StaminaToHealth (int stamina) {
-            return stamina * 5;
-        }
+﻿namespace Utils
+{
+	/// <summary>
+	/// Общие формулы расчетов и преобразований для кор-геймплея
+	/// </summary>
+	public static class MechanicСalculator
+	{
+		public static int StaminaToHealth ( int stamina )
+		{
+			return stamina * 5;
+		}
 
-        public static float AttackPower ( int primaryCharacteristic, int secondaryCharacteristic ) {
-            return primaryCharacteristic + secondaryCharacteristic * 0.2f;
-        }
+		public static float AttackPower ( int primaryCharacteristic, int secondaryCharacteristic )
+		{
+			return primaryCharacteristic + secondaryCharacteristic * 0.2f;
+		}
 
-        public static int Damage ( float attackPower, int weaponDamage, int targetArmor ) {
-            float multiplier = attackPower - targetArmor;
-            if (multiplier > 0)
-                return (int)(weaponDamage * (1 + multiplier * 0.05f));
-            else 
-                return (int)(weaponDamage / (1 + multiplier * 0.05f));
-        }
-    }
+		public static int Damage ( float attackPower, int weaponDamage, int targetArmor )
+		{
+			float multiplier = attackPower - targetArmor;
+			if (multiplier > 0)
+				return (int)(weaponDamage * (1 + multiplier * 0.05f));
+			else
+				return (int)(weaponDamage / (1 + multiplier * 0.05f));
+		}
+	}
 }

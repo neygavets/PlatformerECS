@@ -1,17 +1,21 @@
 using Leopotam.Ecs;
 using UnityEngine;
 
-namespace Common {
-	public class MonoEntity : MonoBehaviour {
-		public EcsEntity Entity { get => entity;}
+namespace GameLogic.UnityComponents
+{
+	public class MonoEntity : MonoBehaviour
+	{
+		public EcsEntity Entity { get => _entity; }
 
-		private EcsEntity entity;
-		private MonoLinkBase[] monoLinks;
+		private EcsEntity _entity;
+		private MonoLinkBase[] _monoLinks;
 
-		public void Link ( ref EcsEntity entity ) {
-			this.entity = entity;
-			monoLinks = GetComponents<MonoLinkBase> ();
-			foreach (MonoLinkBase monoLink in monoLinks) {
+		public void Link ( ref EcsEntity entity )
+		{
+			_entity = entity;
+			_monoLinks = GetComponents<MonoLinkBase> ();
+			foreach (MonoLinkBase monoLink in _monoLinks)
+			{
 				monoLink.Make (ref entity);
 			}
 		}

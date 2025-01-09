@@ -1,4 +1,4 @@
-using Leopotam.Ecs;
+﻿using Leopotam.Ecs;
 using UnityEngine;
 using Common;
 using Input;
@@ -9,55 +9,60 @@ using Characters;
 using Traps;
 using Service;
 
-sealed class Startup : MonoBehaviour {
+/// <summary>
+/// Точка входа в игру
+/// </summary>
+sealed class Startup : MonoBehaviour
+{
 	[SerializeField]
-	private GameData staticData;
+	private GameData _staticData;
 	[SerializeField]
-	private SceneData sceneData;
+	private SceneData _sceneData;
 
-	private EcsWorld world;
-	private EcsSystems systems;
-	private EcsSystems fixedSystems;
+	private EcsWorld _world;
+	private EcsSystems _systems;
+	private EcsSystems _fixedSystems;
 
-	void Start () {
-		world = new EcsWorld ();
-		systems = new EcsSystems (world);
-		fixedSystems = new EcsSystems (world);
+	void Start ()
+	{
+		_world = new EcsWorld ();
+		_systems = new EcsSystems (_world);
+		_fixedSystems = new EcsSystems (_world);
 
-		PreferencesService preferencesService = new (staticData.Player);
+		PreferencesService preferencesService = new (_staticData.Player);
 		preferencesService.LoadPlayerData ();
 
 #if UNITY_EDITOR
-		Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create (world);
-		Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create (systems);
-		Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create (fixedSystems);
+		Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create (_world);
+		Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create (_systems);
+		Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create (_fixedSystems);
 #endif
-		systems
+		_systems
 			.Add (new PlayerInputSystem ())
 			.Add (new SpawnPlayerSystem ())
 			.Add (new SpawnEnemiesSystem ())
 			.Add (new SpawnTrapsSystem ())
 			.Add (new SpawnPrefabSystem ())
 			.Add (new SpawnWeaponSystem ())
-			.Add (new CameraTargetsSystem ())			
+			.Add (new CameraTargetsSystem ())
 			.Add (new MoveAnimationSystem ())
-			.Add (new ShootSystem ())			
+			.Add (new ShootSystem ())
 			.Add (new MeleeAttackSystem ())
 			.Add (new ProjectileHitSystem ())
 			.Add (new TrapHitSystem ())
-			.Add (new CombatAnimationSystem ())			
+			.Add (new CombatAnimationSystem ())
 			.Add (new CooldownSystem ())
 			.Add (new DamageSystem ())
 			.Add (new DeadEnemySystem ())
 			.Add (new DeadPlayerSystem ())
-			.Inject (staticData)
-			.Inject (sceneData)
+			.Inject (_staticData)
+			.Inject (_sceneData)
 			.Inject (preferencesService)
 			.Init ();
 
-		fixedSystems
+		_fixedSystems
 			.Add (new CheckGroundSystem ())
-			.Add (new CheckFallingSystem())
+			.Add (new CheckFallingSystem ())
 			.Add (new ChangeAxisSystem ())
 			.Add (new HorizontalMoveSystem ())
 			.Add (new VerticalMoveSystem ())
@@ -71,24 +76,29 @@ sealed class Startup : MonoBehaviour {
 			.Init ();
 	}
 
-	void Update () {
-		systems?.Run ();
+	void Update ()
+	{
+		_systems?.Run ();
 	}
 
-	private void FixedUpdate () {
-		fixedSystems?.Run ();
+	private void FixedUpdate ()
+	{
+		_fixedSystems?.Run ();
 	}
 
-	void OnDestroy () {
-		if (systems != null) {
-			systems.Destroy ();
-			systems = null;
+	void OnDestroy ()
+	{
+		if (_systems != null)
+		{
+			_systems.Destroy ();
+			_systems = null;
 		}
-		if (fixedSystems != null) {
-			fixedSystems.Destroy ();
-			fixedSystems = null;
+		if (_fixedSystems != null)
+		{
+			_fixedSystems.Destroy ();
+			_fixedSystems = null;
 		}
-		world.Destroy ();
-		world = null;
+		_world.Destroy ();
+		_world = null;
 	}
 }

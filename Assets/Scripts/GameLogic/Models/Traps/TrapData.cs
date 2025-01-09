@@ -2,7 +2,7 @@ using UnityEngine;
 namespace Traps {
 
 	[CreateAssetMenu (menuName = "Gameplay/DamageZone")]
-	public class DamageZoneData : ScriptableObject {
+	public class TrapData : ScriptableObject {
 		[SerializeField] GameObject prefab;
 		[SerializeField] float cooldown;
 		[SerializeField] int damage;

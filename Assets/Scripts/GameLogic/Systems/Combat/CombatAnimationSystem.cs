@@ -1,6 +1,7 @@
 using Common;
 using Leopotam.Ecs;
 using UnityEngine;
+using Utils;
 
 namespace Combat {
     sealed class CombatAnimationSystem : IEcsRunSystem {
