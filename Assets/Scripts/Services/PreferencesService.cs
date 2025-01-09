@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace Service {
 	public class PreferencesService {
-		//TODO: Зашифровывать сохранения
 		private const string PLAYER_MAX_HEALTH = "player_max_health";
 
 		private PlayerData playerData;

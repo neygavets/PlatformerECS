@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d009ac5486a3b641b42f74cccd20190, type: 3}
+  m_Name: DefaultDamageZone
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 3960531442439596383, guid: 845834a71b8d39b458ea7a72a3fcedcb, type: 3}
+  cooldown: 1
+  damage: 5
+  isSingleUse: 0
