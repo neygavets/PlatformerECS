@@ -1,29 +1,36 @@
-using Common;
-using Characters;
+ï»¿using GameLogic.Components.Common;
+using GameLogic.Components.Characters;
 using Leopotam.Ecs;
 using UnityEngine;
+using GameLogic.Components.Combat;
+using GameLogic.Models;
 
-namespace Combat {
-	sealed class DamageSystem : IEcsRunSystem {
+namespace GameLogic.Systems.Combat
+{
+	sealed class DamageSystem : IEcsRunSystem
+	{
 		// auto-injected fields.
-		private EcsFilter<DamageEvent> damageFilter = null;
-		private SceneData sceneData;
+		private EcsFilter<DamageEvent> _damageFilter = null;
+		private SceneData _sceneData;
 
-		void IEcsRunSystem.Run () {
-			foreach (int i in damageFilter) {
-				DamageEvent damageEvent = damageFilter.Get1 (i);
+		void IEcsRunSystem.Run ()
+		{
+			foreach (int i in _damageFilter)
+			{
+				DamageEvent damageEvent = _damageFilter.Get1 (i);
 				ref EcsEntity targetEntity = ref damageEvent.Target;
-				if (!targetEntity.Has<ImmuneToDamageFlag> ()) {
+				if (!targetEntity.Has<ImmuneToDamageFlag> ())
+				{
 					targetEntity.Get<Health> ().Current -= damageEvent.Value;
-					Debug.Log ($"{targetEntity.Get<GameObjectLink>().Value.name} ïîëó÷èë {damageEvent.Value} óðîíà");
+					Debug.Log ($"{targetEntity.Get<GameObjectLink> ().Value.name} Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ð» {damageEvent.Value} ÑƒÑ€Ð¾Ð½Ð°");
 					if (targetEntity.Has<PlayerFlag> ())
-						sceneData.playerInfo.UpdateHealth (targetEntity.Get<Health> ());
+						_sceneData.playerInfo.UpdateHealth (targetEntity.Get<Health> ());
 					if (targetEntity.Has<EnemyBossFlag> ())
-						sceneData.enemyInfo.UpdateHealth (targetEntity.Get<Health> ());
+						_sceneData.enemyInfo.UpdateHealth (targetEntity.Get<Health> ());
 					if (targetEntity.Get<Health> ().Current <= 0)
 						targetEntity.Get<DeadFlag> ();
 				}
-				damageFilter.GetEntity (i).Destroy ();
+				_damageFilter.GetEntity (i).Destroy ();
 			}
 		}
 	}

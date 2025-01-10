@@ -1,5 +1,6 @@
 using Leopotam.Ecs;
 
-namespace Combat {
+namespace GameLogic.Components.Combat
+{
     struct RangeAttackFlag : IEcsIgnoreInFilter { }
 }

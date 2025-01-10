@@ -1,27 +1,28 @@
-using Combat;
-using Common;
-using Characters;
+using GameLogic.Components.Combat;
+using GameLogic.Components.Characters;
 using Leopotam.Ecs;
-using Movements;
+using GameLogic.Components.Movements;
 using UnityEngine;
 using Utils;
 using GameLogic.UnityComponents;
+using GameLogic.Components.Spawners;
+using GameLogic.Models;
 
-namespace Spawners
+namespace GameLogic.Systems.Spawners
 {
 	sealed class SpawnEnemiesSystem : IEcsInitSystem
 	{
-		readonly EcsWorld world = null;
-		private SceneData sceneData;
+		readonly EcsWorld _world = null;
+		private SceneData _sceneData;
 
 		public void Init ()
 		{
-			if (sceneData.spawnEnemyPoints.Length == 0)
+			if (_sceneData.spawnEnemyPoints.Length == 0)
 				return;
 
-			foreach (EnemyPoint enemyPoint in sceneData.spawnEnemyPoints)
+			foreach (EnemyPoint enemyPoint in _sceneData.spawnEnemyPoints)
 			{
-				EcsEntity enemy = world.NewEntity ();
+				EcsEntity enemy = _world.NewEntity ();
 				enemy.Get<SpawnPrefab> () = new SpawnPrefab
 				{
 					Prefab = enemyPoint.Data.Prefab,
@@ -41,7 +42,7 @@ namespace Spawners
 				if (enemyPoint.Data.IsBoss)
 				{
 					enemy.Get<EnemyBossFlag> ();
-					sceneData.enemyInfo.LinkEntity (enemy);
+					_sceneData.enemyInfo.LinkEntity (enemy);
 				}
 			}
 		}

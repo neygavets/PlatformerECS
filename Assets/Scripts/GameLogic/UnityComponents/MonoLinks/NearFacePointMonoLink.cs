@@ -1,6 +1,5 @@
-using Common;
 using Leopotam.Ecs;
-using Movements;
+using GameLogic.Components.Movements;
 using UnityEngine;
 
 namespace GameLogic.UnityComponents

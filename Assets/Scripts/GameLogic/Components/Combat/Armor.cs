@@ -1,9 +1,13 @@
-namespace Combat {
-    public struct Armor {
-        int armor;
-		public int Value {
-			get => armor;
-			set => armor = value >= 0 ? value : 0;
+namespace GameLogic.Components.Combat
+{
+	public struct Armor
+	{
+		int _armor;
+
+		public int Value
+		{
+			get => _armor;
+			set => _armor = value >= 0 ? value : 0;
 		}
 	}
 }

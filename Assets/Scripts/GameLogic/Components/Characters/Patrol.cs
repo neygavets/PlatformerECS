@@ -1,7 +1,9 @@
 using UnityEngine;
 
-namespace Characters {
-    struct Patrol {
-        public Transform[] ControlPoints;
-    }
+namespace GameLogic.Components.Characters
+{
+	struct Patrol
+	{
+		public Transform[] ControlPoints;
+	}
 }

@@ -1,7 +1,7 @@
 using Leopotam.Ecs;
-using Movements;
 using UnityEngine;
 using Utils;
+using GameLogic.Components.Movements;
 
 namespace GameLogic.UnityComponents
 {

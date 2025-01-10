@@ -1,5 +1,6 @@
 using Leopotam.Ecs;
 
-namespace Characters {
-    struct EnemyFlag : IEcsIgnoreInFilter { }
+namespace GameLogic.Components.Characters
+{
+	struct EnemyFlag : IEcsIgnoreInFilter { }
 }

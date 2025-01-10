@@ -1,8 +1,10 @@
 using UnityEngine;
 
-namespace Common {
-    public struct HandGrabPointsLink {
-        public Transform Left;
-        public Transform Right;
-    }
+namespace GameLogic.Components.Characters
+{
+	public struct HandGrabPointsLink
+	{
+		public Transform Left;
+		public Transform Right;
+	}
 }

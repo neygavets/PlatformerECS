@@ -1,4 +1,4 @@
-using Characters;
+using GameLogic.Models.Characters;
 using UnityEditor;
 using UnityEngine;
 

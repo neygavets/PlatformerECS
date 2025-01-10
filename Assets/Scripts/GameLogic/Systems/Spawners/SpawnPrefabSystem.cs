@@ -1,24 +1,31 @@
 using GameLogic.UnityComponents;
 using Leopotam.Ecs;
+using GameLogic.Components.Spawners;
+using GameLogic.Models;
 
-namespace Spawners {
-	public class SpawnPrefabSystem : IEcsPreInitSystem, IEcsRunSystem {
+namespace GameLogic.Systems.Spawners
+{
+	public class SpawnPrefabSystem : IEcsPreInitSystem, IEcsRunSystem
+	{
 		// auto-injected fields.
-		private EcsWorld world;
-		private SceneData sceneData;
-		private EcsFilter<SpawnPrefab> spawnFilter = null;
-		private PrefabFactory factory;
+		private EcsWorld _world;
+		private SceneData _sceneData;
+		private EcsFilter<SpawnPrefab> _spawnFilter = null;
+		private PrefabFactory _factory;
 
-		public void PreInit () {
-			factory = sceneData.factory;
-			factory.Init (world);
+		public void PreInit ()
+		{
+			_factory = _sceneData.factory;
+			_factory.Init (_world);
 		}
 
-		public void Run () {
-			foreach (int index in spawnFilter) {
-				ref EcsEntity spawnEntity = ref spawnFilter.GetEntity (index);
+		public void Run ()
+		{
+			foreach (int index in _spawnFilter)
+			{
+				ref EcsEntity spawnEntity = ref _spawnFilter.GetEntity (index);
 				SpawnPrefab spawnPrefabData = spawnEntity.Get<SpawnPrefab> ();
-				factory.Spawn (spawnEntity, spawnPrefabData);
+				_factory.Spawn (spawnEntity, spawnPrefabData);
 				spawnEntity.Del<SpawnPrefab> ();
 			}
 		}

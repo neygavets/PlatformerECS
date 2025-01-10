@@ -1,5 +1,6 @@
 using Leopotam.Ecs;
 
-namespace Traps {
-    struct TrapFlag : IEcsIgnoreInFilter { }
+namespace GameLogic.Components.Traps
+{
+	struct TrapFlag : IEcsIgnoreInFilter { }
 }

@@ -1,28 +1,35 @@
-using Common;
+ï»¿using GameLogic.Components.Common;
 using Leopotam.Ecs;
+using GameLogic.Components.Movements;
 using UnityEngine;
 
-namespace Movements {
-    sealed class DirectionSystem : IEcsRunSystem {
-        // auto-injected fields.
-        private EcsFilter<Directed, Rigidbody2DLink> directedBodyFilter = null;
+namespace GameLogic.Systems.Movements
+{
+	sealed class DirectionSystem : IEcsRunSystem
+	{
+		// auto-injected fields.
+		private EcsFilter<Directed, Rigidbody2DLink> _directedBodyFilter = null;
 
-        private readonly Vector3 flippedScale = new (-1, 1, 1);
-        private readonly float minFlipSpeed = 0.1f; // Ìèíèìàëüíàÿ ñêîðîñòü äâèæåíèÿ, ïðè êîòîðîé òåëî ðàçâåðíåòñÿ â íàïðàâëåíèè ýòîãî äâèæåíèÿ
+		private readonly Vector3 FLIPPED_SCALE = new (-1, 1, 1);
+		private const float MIN_FLIP_SPEED = 0.1f; // ÐœÐ¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ð°Ñ ÑÐºÐ¾Ñ€Ð¾ÑÑ‚ÑŒ Ð´Ð²Ð¸Ð¶ÐµÐ½Ð¸Ñ, Ð¿Ñ€Ð¸ ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¹ Ñ‚ÐµÐ»Ð¾ Ñ€Ð°Ð·Ð²ÐµÑ€Ð½ÐµÑ‚ÑÑ Ð² Ð½Ð°Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ð¸ ÑÑ‚Ð¾Ð³Ð¾ Ð´Ð²Ð¸Ð¶ÐµÐ½Ð¸Ñ
 
-        void IEcsRunSystem.Run () {
-            foreach (int i in directedBodyFilter) {
-                ref Rigidbody2D body = ref directedBodyFilter.Get2 (i).Value;
-                ref bool isFlipped = ref directedBodyFilter.Get1 (i).isFlipped;
-                if (body.velocity.x > minFlipSpeed && isFlipped) {
-                    isFlipped = false;
-                    body.transform.localScale = Vector3.one;
-                }
-                if (body.velocity.x < -minFlipSpeed && !isFlipped) {
-                    isFlipped = true;
-                    body.transform.localScale = flippedScale;
-                }
-            }
-        }
-    }
+		void IEcsRunSystem.Run ()
+		{
+			foreach (int i in _directedBodyFilter)
+			{
+				ref Rigidbody2D body = ref _directedBodyFilter.Get2 (i).Value;
+				ref bool isFlipped = ref _directedBodyFilter.Get1 (i).isFlipped;
+				if (body.velocity.x > MIN_FLIP_SPEED && isFlipped)
+				{
+					isFlipped = false;
+					body.transform.localScale = Vector3.one;
+				}
+				if (body.velocity.x < -MIN_FLIP_SPEED && !isFlipped)
+				{
+					isFlipped = true;
+					body.transform.localScale = FLIPPED_SCALE;
+				}
+			}
+		}
+	}
 }

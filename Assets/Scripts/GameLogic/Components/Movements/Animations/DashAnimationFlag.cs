@@ -1,5 +1,6 @@
 using Leopotam.Ecs;
 
-namespace Movements {
-    struct DashAnimationFlag : IEcsIgnoreInFilter { }
+namespace GameLogic.Components.Movements
+{
+	struct DashAnimationFlag : IEcsIgnoreInFilter { }
 }

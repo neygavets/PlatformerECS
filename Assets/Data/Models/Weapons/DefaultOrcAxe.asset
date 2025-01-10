@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0447cc7f6114b4c4288235160fcb49ef, type: 3}
   m_Name: DefaultOrcAxe
   m_EditorClassIdentifier: 
-  prefab: {fileID: 433804507081561890, guid: dfdd901e70f21ed4aa1eb3a2efba6639, type: 3}
-  cooldown: 0.2
-  minDamage: 15
-  maxDamage: 20
-  weaponTypeByRange: 0
-  weaponTypeByGrab: 0
+  _prefab: {fileID: 433804507081561890, guid: dfdd901e70f21ed4aa1eb3a2efba6639, type: 3}
+  _cooldown: 1
+  _minDamage: 10
+  _maxDamage: 15
+  _weaponTypeByRange: 0
+  _weaponTypeByGrab: 0

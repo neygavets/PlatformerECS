@@ -1,5 +1,7 @@
-namespace Combat {
-    struct CooldownCharacteristic {
-        public float Value;
-    }
+namespace GameLogic.Components.Combat
+{
+	struct CooldownCharacteristic
+	{
+		public float Value;
+	}
 }

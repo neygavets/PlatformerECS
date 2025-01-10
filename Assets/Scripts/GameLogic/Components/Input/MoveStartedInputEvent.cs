@@ -1,5 +1,7 @@
-namespace Input {
-    struct MoveStartedInputEvent {
-        public float Value;
-    }
+namespace GameLogic.Components.Input
+{
+	struct MoveStartedInputEvent
+	{
+		public float Value;
+	}
 }

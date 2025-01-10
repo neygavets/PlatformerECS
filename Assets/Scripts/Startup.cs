@@ -1,13 +1,14 @@
 ﻿using Leopotam.Ecs;
 using UnityEngine;
-using Common;
-using Input;
-using Movements;
-using Spawners;
-using Combat;
-using Characters;
-using Traps;
 using Service;
+using GameLogic.Systems.Spawners;
+using GameLogic.Systems.Traps;
+using GameLogic.Systems.Movements;
+using GameLogic.Systems.Input;
+using GameLogic.Systems.Common;
+using GameLogic.Systems.Combat;
+using GameLogic.Systems.Characters;
+using GameLogic.Models;
 
 /// <summary>
 /// Точка входа в игру

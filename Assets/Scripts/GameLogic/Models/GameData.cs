@@ -1,11 +1,18 @@
-using Characters;
+using GameLogic.Models.Characters;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "Config/StaticData", fileName = "StaticData", order = 0)]
-public class GameData : ScriptableObject {
-	[SerializeField] PlayerData player;
-	[SerializeField] GameObject inputPrefab;
+namespace GameLogic.Models
+{
+	[CreateAssetMenu (menuName = "Config/StaticData", fileName = "StaticData", order = 0)]
+	public class GameData : ScriptableObject
+	{
+		[SerializeField]
+		private PlayerData _player;
 
-	public PlayerData Player { get => player; }
-	public GameObject InputPrefab { get => inputPrefab; }
+		[SerializeField]
+		private GameObject _inputPrefab;
+
+		public PlayerData Player { get => _player; }
+		public GameObject InputPrefab { get => _inputPrefab; }
+	}
 }

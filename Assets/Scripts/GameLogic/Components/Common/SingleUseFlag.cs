@@ -1,5 +1,6 @@
 using Leopotam.Ecs;
 
-namespace Common {
-    struct SingleUseFlag : IEcsIgnoreInFilter { }
+namespace GameLogic.Components.Common
+{
+	struct SingleUseFlag : IEcsIgnoreInFilter { }
 }

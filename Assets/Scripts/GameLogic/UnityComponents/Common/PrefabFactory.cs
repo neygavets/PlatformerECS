@@ -1,5 +1,5 @@
 using Leopotam.Ecs;
-using Spawners;
+using GameLogic.Components.Spawners;
 using UnityEngine;
 
 namespace GameLogic.UnityComponents

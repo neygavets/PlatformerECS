@@ -1,5 +1,6 @@
 using Leopotam.Ecs;
 
-namespace Movements {
-    struct DuckStateFlag : IEcsIgnoreInFilter { }
+namespace GameLogic.Components.Movements
+{
+	struct DuckStateFlag : IEcsIgnoreInFilter { }
 }

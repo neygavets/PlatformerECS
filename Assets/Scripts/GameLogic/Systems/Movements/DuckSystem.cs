@@ -1,37 +1,47 @@
-using Common;
+﻿using GameLogic.Components.Common;
 using Leopotam.Ecs;
 using UnityEngine;
 using Utils;
+using GameLogic.Components.Movements;
 
-namespace Movements {
-	sealed class DuckSystem : IEcsRunSystem {
+namespace GameLogic.Systems.Movements
+{
+	sealed class DuckSystem : IEcsRunSystem
+	{
 		// auto-injected fields.
-		private EcsFilter<DuckAction, Collider2DLink, PhysicalBodySizeLink> duckFilter = null;
+		private EcsFilter<DuckAction, Collider2DLink, PhysicalBodySizeLink> _duckFilter = null;
 
-		private float headRadius = 0.18f;
-		private float headOffset = 0.05f;
-		private LayerMask groundedMask = LayerMask.GetMask ("Ground", "Wall");
+		private const float HEAD_RADIUS = 0.18f;
+		private const float HEAD_OFFSET = 0.05f;
+		private LayerMask _groundedMask = LayerMask.GetMask ("Ground", "Wall");
 
-		void IEcsRunSystem.Run () {
-			foreach (int i in duckFilter) {
-				ref EcsEntity entity = ref duckFilter.GetEntity (0);
+		void IEcsRunSystem.Run ()
+		{
+			foreach (int i in _duckFilter)
+			{
+				ref EcsEntity entity = ref _duckFilter.GetEntity (0);
 				entity.Del<DuckAction> ();
+
 				if (!entity.Has<FreeMovingFlag> ())
 					return;
 
-				if (entity.Has<DuckStateFlag> ()) {
-					Vector2 headPoint = new Vector2 (duckFilter.Get2(i).Value.transform.position.x, duckFilter.Get2 (i).Value.transform.position.y + duckFilter.Get3(i).Size.y - headOffset);
-					if (!Physics2D.OverlapCircle (headPoint, headRadius, groundedMask)) {
-						Collider2DUtils.SetSize (ref duckFilter.Get2 (i).Value, duckFilter.Get3 (i).Size);
-						duckFilter.Get2 (i).Value.offset = duckFilter.Get3 (i).Offset;
+				if (entity.Has<DuckStateFlag> ())
+				{
+					Vector2 headPoint = new Vector2 (_duckFilter.Get2 (i).Value.transform.position.x, _duckFilter.Get2 (i).Value.transform.position.y + _duckFilter.Get3 (i).Size.y - HEAD_OFFSET);
+					if (!Physics2D.OverlapCircle (headPoint, HEAD_RADIUS, _groundedMask))
+					{
+						Collider2DUtils.SetSize (ref _duckFilter.Get2 (i).Value, _duckFilter.Get3 (i).Size);
+						_duckFilter.Get2 (i).Value.offset = _duckFilter.Get3 (i).Offset;
 						entity.Del<DuckStateFlag> ();
 						entity.Get<DuckExitAnimationFlag> ();
 					}
-				} else {
+				}
+				else
+				{
 					entity.Get<DuckStateFlag> ();
 					entity.Get<DuckEnterAnimationFlag> ();
-					Collider2DUtils.SetSize(ref duckFilter.Get2 (i).Value, new Vector2 (duckFilter.Get3 (i).Size.x, duckFilter.Get3 (i).Size.y / 2f));
-					duckFilter.Get2 (i).Value.offset = new Vector2 (duckFilter.Get3 (i).Offset.x, duckFilter.Get3 (i).Offset.y + (duckFilter.Get3 (i).Size.y / 2f - duckFilter.Get3 (i).Size.y) / 2f);
+					Collider2DUtils.SetSize (ref _duckFilter.Get2 (i).Value, new Vector2 (_duckFilter.Get3 (i).Size.x, _duckFilter.Get3 (i).Size.y / 2f));
+					_duckFilter.Get2 (i).Value.offset = new Vector2 (_duckFilter.Get3 (i).Offset.x, _duckFilter.Get3 (i).Offset.y + (_duckFilter.Get3 (i).Size.y / 2f - _duckFilter.Get3 (i).Size.y) / 2f);
 				}
 			}
 		}

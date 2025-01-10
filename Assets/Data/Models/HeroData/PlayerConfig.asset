@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b179f6dff6107f4eba0fd89583f1a3b, type: 3}
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1399670417065827519, guid: eeba9b904811110418fe030485d436cb, type: 3}
-  weapon: {fileID: 11400000, guid: ab5f0621c6d11c8498055356dc970707, type: 2}
-  stamina: 15
-  strength: 5
-  agility: 10
-  intellect: 10
+  _prefab: {fileID: 1399670417065827519, guid: eeba9b904811110418fe030485d436cb, type: 3}
+  _weapon: {fileID: 11400000, guid: ab5f0621c6d11c8498055356dc970707, type: 2}
+  _stamina: 10
+  _strength: 10
+  _agility: 10
+  _intellect: 10
+  _armor: 10

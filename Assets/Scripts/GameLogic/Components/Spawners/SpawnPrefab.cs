@@ -1,7 +1,9 @@
 using UnityEngine;
 
-namespace Spawners {
-	public struct SpawnPrefab {
+namespace GameLogic.Components.Spawners
+{
+	public struct SpawnPrefab
+	{
 		public GameObject Prefab;
 		public Vector3 Position;
 		public Quaternion Rotation;

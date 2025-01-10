@@ -1,4 +1,4 @@
-﻿using Traps;
+﻿using GameLogic.Models.Traps;
 using UnityEditor;
 using UnityEngine;
 

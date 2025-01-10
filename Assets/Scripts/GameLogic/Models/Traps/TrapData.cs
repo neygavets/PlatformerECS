@@ -1,16 +1,25 @@
 using UnityEngine;
-namespace Traps {
 
+namespace GameLogic.Models.Traps
+{
 	[CreateAssetMenu (menuName = "Gameplay/DamageZone")]
-	public class TrapData : ScriptableObject {
-		[SerializeField] GameObject prefab;
-		[SerializeField] float cooldown;
-		[SerializeField] int damage;
-		[SerializeField] bool isSingleUse;
+	public class TrapData : ScriptableObject
+	{
+		[SerializeField]
+		private GameObject _prefab;
 
-		public GameObject Prefab { get => prefab; set => prefab = value; }
-		public float Cooldown { get => cooldown; set => cooldown = value; }
-		public int Damage { get => damage; set => damage = value; }
-		public bool IsSingleUse { get => isSingleUse; set => isSingleUse = value; }
+		[SerializeField]
+		private float _cooldown;
+
+		[SerializeField]
+		private int _damage;
+
+		[SerializeField]
+		private bool _isSingleUse;
+
+		public GameObject Prefab { get => _prefab; set => _prefab = value; }
+		public float Cooldown { get => _cooldown; set => _cooldown = value; }
+		public int Damage { get => _damage; set => _damage = value; }
+		public bool IsSingleUse { get => _isSingleUse; set => _isSingleUse = value; }
 	}
 }

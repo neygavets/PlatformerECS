@@ -1,4 +1,4 @@
-﻿using Characters;
+﻿using GameLogic.Models.Characters;
 using UnityEngine;
 
 namespace Service

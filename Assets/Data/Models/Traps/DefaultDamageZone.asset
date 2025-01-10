@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d009ac5486a3b641b42f74cccd20190, type: 3}
   m_Name: DefaultDamageZone
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3960531442439596383, guid: 845834a71b8d39b458ea7a72a3fcedcb, type: 3}
-  cooldown: 1
-  damage: 5
-  isSingleUse: 0
+  _prefab: {fileID: 3960531442439596383, guid: 845834a71b8d39b458ea7a72a3fcedcb, type: 3}
+  _cooldown: 2
+  _damage: 10
+  _isSingleUse: 0

@@ -1,5 +1,6 @@
 using Leopotam.Ecs;
 
-namespace Movements {
-    struct ChangeAxisMoving : IEcsIgnoreInFilter { }
+namespace GameLogic.Components.Movements
+{
+	struct ChangeAxisMoving : IEcsIgnoreInFilter { }
 }

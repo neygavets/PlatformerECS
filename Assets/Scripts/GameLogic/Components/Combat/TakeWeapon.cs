@@ -1,8 +1,9 @@
-using UnityEngine;
-using Leopotam.Ecs;
+using GameLogic.Models.Weapons;
 
-namespace Combat {
-    public struct TakeWeapon {
-        public WeaponData Value;
-    }
+namespace GameLogic.Components.Combat
+{
+	public struct TakeWeapon
+	{
+		public WeaponData Value;
+	}
 }

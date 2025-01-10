@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66185c3d20a571d44af32c656fcbf1ac, type: 3}
   m_Name: DefaultMotionConfig
   m_EditorClassIdentifier: 
-  moveAcceleration: 40
-  dashAcceleration: 5
-  maxMoveSpeed: 6
-  maxDashSpeed: 10
-  jumpForce: 1100
-  jumpGravityScale: 3
-  fallGravityScale: 5
-  groundedGravityScale: 1
+  _moveAcceleration: 40
+  _dashAcceleration: 5
+  _maxMoveSpeed: 6
+  _maxDashSpeed: 10
+  _jumpForce: 1100
+  _jumpGravityScale: 3
+  _fallGravityScale: 5
+  _groundedGravityScale: 1

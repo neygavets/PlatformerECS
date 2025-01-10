@@ -1,5 +1,7 @@
-namespace Common {
-    struct Cooldown {
-        public float Value;
-    }
+namespace GameLogic.Components.Common
+{
+	struct Cooldown
+	{
+		public float Value;
+	}
 }

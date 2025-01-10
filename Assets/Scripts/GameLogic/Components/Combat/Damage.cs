@@ -1,5 +1,7 @@
-namespace Combat {
-    struct Damage {
-        public int Value;
-    }
+namespace GameLogic.Components.Combat
+{
+	struct Damage
+	{
+		public int Value;
+	}
 }

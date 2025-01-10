@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66185c3d20a571d44af32c656fcbf1ac, type: 3}
   m_Name: HeroMotionConfig
   m_EditorClassIdentifier: Assembly-CSharp::WalkerSetting
-  moveAcceleration: 40
-  dashAcceleration: 40000
-  maxMoveSpeed: 4
-  maxDashSpeed: 15
-  jumpForce: 1100
-  jumpGravityScale: 3
-  fallGravityScale: 5
-  groundedGravityScale: 1
+  _moveAcceleration: 40
+  _dashAcceleration: 15000
+  _maxMoveSpeed: 6
+  _maxDashSpeed: 50
+  _jumpForce: 1100
+  _jumpGravityScale: 3
+  _fallGravityScale: 5
+  _groundedGravityScale: 1

@@ -1,5 +1,6 @@
 using Leopotam.Ecs;
 
-namespace Input {
+namespace GameLogic.Components.Input
+{
     struct DashInputEvent : IEcsIgnoreInFilter { }
 }

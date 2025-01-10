@@ -1,7 +1,9 @@
 using UnityEngine;
 
-namespace Common {
-	public struct GameObjectLink {
+namespace GameLogic.Components.Common
+{
+	public struct GameObjectLink
+	{
 		public GameObject Value;
 	}
 }

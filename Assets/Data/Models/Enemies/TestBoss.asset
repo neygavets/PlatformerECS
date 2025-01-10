@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c96f79494bfa8044af63e66e0b77123, type: 3}
   m_Name: TestBoss
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2756571252288089338, guid: ae9302ae3af3cb44da1d7f58b89c8456, type: 3}
-  weapon: {fileID: 11400000, guid: 86381be1e88273c49b588d64c00b1b37, type: 2}
-  stamina: 20
-  strength: 10
-  agility: 10
-  intellect: 10
-  armor: 20
-  isBoss: 1
+  _prefab: {fileID: 2756571252288089338, guid: ae9302ae3af3cb44da1d7f58b89c8456, type: 3}
+  _weapon: {fileID: 11400000, guid: 67ca46372148850408742b34c14540a0, type: 2}
+  _stamina: 20
+  _strength: 20
+  _agility: 20
+  _intellect: 20
+  _armor: 20
+  _isBoss: 1

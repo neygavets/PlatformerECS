@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c96f79494bfa8044af63e66e0b77123, type: 3}
   m_Name: TestMeleeEnemy
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2756571252288089338, guid: ae9302ae3af3cb44da1d7f58b89c8456, type: 3}
-  weapon: {fileID: 11400000, guid: 67ca46372148850408742b34c14540a0, type: 2}
-  stamina: 10
-  strength: 10
-  agility: 0
-  intellect: 0
-  armor: 10
-  isBoss: 0
+  _prefab: {fileID: 2756571252288089338, guid: ae9302ae3af3cb44da1d7f58b89c8456, type: 3}
+  _weapon: {fileID: 11400000, guid: 177690429815d844292201d91f851b53, type: 2}
+  _stamina: 10
+  _strength: 10
+  _agility: 10
+  _intellect: 10
+  _armor: 10
+  _isBoss: 0

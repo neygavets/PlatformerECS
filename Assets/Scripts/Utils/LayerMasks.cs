@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using Leopotam.Ecs;
-using Characters;
+using GameLogic.Components.Characters;
 
 namespace Utils
 {

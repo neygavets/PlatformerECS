@@ -1,31 +1,39 @@
-using Common;
+﻿using GameLogic.Components.Common;
 using Leopotam.Ecs;
 using UnityEngine;
+using GameLogic.Components.Movements;
 
-namespace Movements {
-	sealed class DashSystem : IEcsRunSystem {
+namespace GameLogic.Systems.Movements
+{
+	sealed class DashSystem : IEcsRunSystem
+	{
 		// auto-injected fields.
-		private EcsFilter<DashAction, Rigidbody2DLink, HorizontalMovingFlag> dashActionFilter = null;
-		private EcsFilter<DashState, Rigidbody2DLink, MotionConfigLink> dashStateFilter = null;
+		private EcsFilter<DashAction, Rigidbody2DLink, HorizontalMovingFlag> _dashActionFilter = null;
+		private EcsFilter<DashState, Rigidbody2DLink, MotionConfigLink> _dashStateFilter = null;
 
-		void IEcsRunSystem.Run () {
-			foreach (int i in dashActionFilter) {
-				ref EcsEntity entity = ref dashActionFilter.GetEntity (i);
+		void IEcsRunSystem.Run ()
+		{
+			foreach (int i in _dashActionFilter)
+			{
+				ref EcsEntity entity = ref _dashActionFilter.GetEntity (i);
 				entity.Del<DashAction> ();
-				if (entity.Has<DashState> () || !entity.Has<FreeMovingFlag>())
+				if (entity.Has<DashState> () || !entity.Has<FreeMovingFlag> ())
 					return;
 				entity.Get<DashState> () = new DashState { Duration = 0.2f };
-				dashActionFilter.Get2 (i).Value.velocity = Vector2.zero;				
+				_dashActionFilter.Get2 (i).Value.velocity = Vector2.zero;
 			}
 
-			foreach (int i in dashStateFilter) {
-				ref EcsEntity entity = ref dashStateFilter.GetEntity (i);				
-				if (entity.Get<DashState>().Duration <= 0) {
+			foreach (int i in _dashStateFilter)
+			{
+				ref EcsEntity entity = ref _dashStateFilter.GetEntity (i);
+				if (entity.Get<DashState> ().Duration <= 0)
+				{
 					entity.Del<DashState> ();
 					return;
 				}
-				Rigidbody2D body = dashStateFilter.Get2 (i).Value;
-				body.AddForce (Vector2.right * body.transform.localScale.x * dashStateFilter.Get3 (i).Value.DashAcceleration, ForceMode2D.Force);
+
+				Rigidbody2D body = _dashStateFilter.Get2 (i).Value;
+				body.AddForce (_dashStateFilter.Get3 (i).Value.DashAcceleration * body.transform.localScale.x * Vector2.right, ForceMode2D.Force);
 				body.velocity = new Vector2 (body.velocity.x, 0.0f);
 				entity.Get<DashState> ().Duration -= Time.deltaTime;
 			}

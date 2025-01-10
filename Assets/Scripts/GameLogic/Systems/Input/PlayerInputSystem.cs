@@ -1,48 +1,56 @@
 using Leopotam.Ecs;
 using UnityEngine;
-using Common;
-using Spawners;
-using Movements;
-using Combat;
-using Characters;
+using GameLogic.Components.Spawners;
+using GameLogic.Components.Movements;
+using GameLogic.Components.Combat;
+using GameLogic.Components.Characters;
+using GameLogic.Components.Input;
+using GameLogic.Models;
 
-namespace Input {
-	sealed class PlayerInputSystem : IEcsInitSystem, IEcsRunSystem {
+namespace GameLogic.Systems.Input
+{
+	sealed class PlayerInputSystem : IEcsInitSystem, IEcsRunSystem
+	{
 		// auto-injected fields.
-		private EcsWorld world = null;
-		private GameData staticData;
-		private EcsFilter<PlayerFlag> playerFilter = null;
-		private EcsFilter<InputFlag> inputFilter = null;
+		private EcsWorld _world = null;
+		private GameData _staticData;
+		private EcsFilter<PlayerFlag> _playerFilter = null;
+		private EcsFilter<InputFlag> _inputFilter = null;
 
-		public void Init () {
-			EcsEntity input = world.NewEntity ();
+		public void Init ()
+		{
+			EcsEntity input = _world.NewEntity ();
 			input.Get<InputFlag> ();
-			input.Get<SpawnPrefab> () = new SpawnPrefab {
-				Prefab = staticData.InputPrefab,
+			input.Get<SpawnPrefab> () = new SpawnPrefab
+			{
+				Prefab = _staticData.InputPrefab,
 				Position = Vector3.zero,
 				Rotation = Quaternion.identity,
 				Parent = null
 			};
 		}
 
-		public void Run () {
-			if (inputFilter.GetEntity (0).IsNull ())
+		public void Run ()
+		{
+			if (_inputFilter.GetEntity (0).IsNull ())
 				return;
 
-			ref EcsEntity inputEntity = ref inputFilter.GetEntity (0);
+			ref EcsEntity inputEntity = ref _inputFilter.GetEntity (0);
 
-			foreach (int i in playerFilter) {
-				ref EcsEntity playerEntity = ref playerFilter.GetEntity (i);
+			foreach (int i in _playerFilter)
+			{
+				ref EcsEntity playerEntity = ref _playerFilter.GetEntity (i);
 
-				if (inputEntity.Has<MovePerformedInputEvent>())
+				if (inputEntity.Has<MovePerformedInputEvent> ())
 					playerEntity.Get<Velocity> ().Value = inputEntity.Get<MovePerformedInputEvent> ().Value;
 
 				if (inputEntity.Has<MoveCanceledInputEvent> ())
 					playerEntity.Get<Velocity> ().Value = inputEntity.Get<MoveCanceledInputEvent> ().Value;
 
-				if (inputEntity.Has<MoveStartedInputEvent> ()) {
+				if (inputEntity.Has<MoveStartedInputEvent> ())
+				{
 					playerEntity.Get<Velocity> ().Value = inputEntity.Get<MoveStartedInputEvent> ().Value;
-					if(playerEntity.Has<GrabLedgeStateFlag>())
+					if (playerEntity.Has<GrabLedgeStateFlag> ())
 						playerEntity.Get<PullUpAction> ();
 				}
 

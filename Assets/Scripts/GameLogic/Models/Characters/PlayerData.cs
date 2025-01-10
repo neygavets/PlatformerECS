@@ -1,9 +1,10 @@
-using Combat;
 using UnityEngine;
 
-namespace Characters {
+namespace GameLogic.Models.Characters
+{
 	[CreateAssetMenu (menuName = "Gameplay/Player")]
-	public class PlayerData : CharacterData {
+	public class PlayerData : CharacterData
+	{
 
 	}
 }

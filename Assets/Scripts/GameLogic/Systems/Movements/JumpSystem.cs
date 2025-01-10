@@ -1,41 +1,54 @@
-using Common;
+ï»¿using GameLogic.Components.Common;
+using GameLogic.Models.Characters;
 using Leopotam.Ecs;
 using UnityEngine;
+using GameLogic.Components.Movements;
 
-namespace Movements {
-	sealed class JumpSystem : IEcsRunSystem {
+namespace GameLogic.Systems.Movements
+{
+	sealed class JumpSystem : IEcsRunSystem
+	{
 		// auto-injected fields.
-		private EcsFilter<JumpAction, Rigidbody2DLink, MotionConfigLink> jumpActionFilter = null;
-		private EcsFilter<JumpStateFlag> jumpEndFilter = null;
+		private EcsFilter<JumpAction, Rigidbody2DLink, MotionConfigLink> _jumpActionFilter = null;
+		private EcsFilter<JumpStateFlag> _jumpEndFilter = null;
 
-		float minVerticalVelocity = 0.01f;
+		private float _minVerticalVelocity = 0.01f;
 
-		void IEcsRunSystem.Run () {
-			foreach (int i in jumpActionFilter) {
-				ref EcsEntity entity = ref jumpActionFilter.GetEntity (i);
-				ref Rigidbody2D body = ref jumpActionFilter.Get2 (i).Value;
-				ref MotionConfig config = ref jumpActionFilter.Get3 (i).Value;
-				entity.Del<JumpAction> ();				
-				if (entity.Has<GroundedFlag> ()) {
+		void IEcsRunSystem.Run ()
+		{
+			foreach (int i in _jumpActionFilter)
+			{
+				ref EcsEntity entity = ref _jumpActionFilter.GetEntity (i);
+				ref Rigidbody2D body = ref _jumpActionFilter.Get2 (i).Value;
+				ref MotionConfig config = ref _jumpActionFilter.Get3 (i).Value;
+				entity.Del<JumpAction> ();
+				if (entity.Has<GroundedFlag> ())
+				{
 					AddJumpForce (body, config);
 					entity.Get<JumpStateFlag> ();
 					entity.Get<JumpAnimationFlag> ();
-				} else	if (entity.Has<JumpStateFlag> ()) {
+				}
+				else if (entity.Has<JumpStateFlag> ())
+				{
 					AddJumpForce (body, config);
 					entity.Del<JumpStateFlag> ();
 					entity.Get<JumpAnimationFlag> ();
 				}
 			}
-			foreach (int i in jumpEndFilter) {
-				ref EcsEntity entity = ref jumpActionFilter.GetEntity (i);
-				bool noVerticalVelocity = Mathf.Abs (entity.Get<Rigidbody2DLink> ().Value.velocity.y) < minVerticalVelocity; // Íà ñëó÷àé, åñëè ïîñëå ïðûæêà ñðàçó æå ïðèçåìëèëèñü, íå ïàäàÿ
-				if (entity.Has<FallingFlag> () || noVerticalVelocity) {
+
+			foreach (int i in _jumpEndFilter)
+			{
+				ref EcsEntity entity = ref _jumpActionFilter.GetEntity (i);
+				bool noVerticalVelocity = Mathf.Abs (entity.Get<Rigidbody2DLink> ().Value.velocity.y) < _minVerticalVelocity; // ÐÐ° ÑÐ»ÑƒÑ‡Ð°Ð¹, ÐµÑÐ»Ð¸ Ð¿Ð¾ÑÐ»Ðµ Ð¿Ñ€Ñ‹Ð¶ÐºÐ° ÑÑ€Ð°Ð·Ñƒ Ð¶Ðµ Ð¿Ñ€Ð¸Ð·ÐµÐ¼Ð»Ð¸Ð»Ð¸ÑÑŒ, Ð½Ðµ Ð¿Ð°Ð´Ð°Ñ
+				if (entity.Has<FallingFlag> () || noVerticalVelocity)
+				{
 					entity.Del<JumpStateFlag> ();
 				}
 			}
 		}
 
-		private void AddJumpForce ( Rigidbody2D body, MotionConfig config ) {			
+		private void AddJumpForce ( Rigidbody2D body, MotionConfig config )
+		{
 			body.gravityScale = config.JumpGravityScale;
 			body.AddForce (new Vector2 (0, config.JumpForce), ForceMode2D.Impulse);
 		}

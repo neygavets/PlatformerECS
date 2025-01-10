@@ -1,5 +1,4 @@
-using Common;
-using Input;
+using GameLogic.Components.Input;
 using Leopotam.Ecs;
 using UnityEngine;
 using UnityEngine.InputSystem;

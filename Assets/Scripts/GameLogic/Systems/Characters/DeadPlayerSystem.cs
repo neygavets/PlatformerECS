@@ -1,20 +1,24 @@
-using Combat;
-using Common;
+п»їusing GameLogic.Components.Characters;
+using GameLogic.Components.Combat;
 using Leopotam.Ecs;
 using UnityEngine;
 
-namespace Characters {
-    sealed class DeadPlayerSystem : IEcsRunSystem {
-        // auto-injected fields.
-        private EcsFilter<DeadFlag, PlayerFlag> deadFilter = null;
+namespace GameLogic.Systems.Characters
+{
+	sealed class DeadPlayerSystem : IEcsRunSystem
+	{
+		// auto-injected fields.
+		private EcsFilter<DeadFlag, PlayerFlag> _deadFilter = null;
 
-        void IEcsRunSystem.Run () {
-            foreach (int i in deadFilter) {
-                ref EcsEntity entity = ref deadFilter.GetEntity (i);
-                entity.Del<DeadFlag> ();
-                Debug.Log ("Игрок умер");
-                //TODO: Обработка смерти игрока
-            }
-        }
-    }
+		void IEcsRunSystem.Run ()
+		{
+			foreach (int i in _deadFilter)
+			{
+				ref EcsEntity entity = ref _deadFilter.GetEntity (i);
+				entity.Del<DeadFlag> ();
+				Debug.Log ("РРіСЂРѕРє СѓРјРµСЂ");
+				//TODO: РћР±СЂР°Р±РѕС‚РєР° СЃРјРµСЂС‚Рё РёРіСЂРѕРєР°
+			}
+		}
+	}
 }

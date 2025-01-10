@@ -1,8 +1,9 @@
-using Common;
 using GameLogic.UnityComponents;
 
-namespace Combat {
-    public struct ProjectilePoolLink {
-        public ObjectPool Value;
-    }
+namespace GameLogic.Components.Combat
+{
+	public struct ProjectilePoolLink
+	{
+		public ObjectPool Value;
+	}
 }

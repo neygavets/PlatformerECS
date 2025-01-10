@@ -1,5 +1,6 @@
 using Leopotam.Ecs;
 
-namespace Movements {
-    struct FreeMovingFlag : IEcsIgnoreInFilter { }
+namespace GameLogic.Components.Movements
+{
+	struct FreeMovingFlag : IEcsIgnoreInFilter { }
 }

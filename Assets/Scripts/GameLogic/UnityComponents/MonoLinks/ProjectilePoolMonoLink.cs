@@ -1,5 +1,5 @@
-using Combat;
-using Common;
+using GameLogic.Components.Combat;
+using GameLogic.Components.Common;
 using Leopotam.Ecs;
 using UnityEngine;
 using Utils;

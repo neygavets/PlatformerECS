@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0447cc7f6114b4c4288235160fcb49ef, type: 3}
   m_Name: DefaultArbalet
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8069351938502896671, guid: a4358d0c54e402345b4ca71cf5b82d5f, type: 3}
-  cooldown: 1
-  minDamage: 10
-  maxDamage: 15
-  weaponTypeByRange: 1
-  weaponTypeByGrab: 1
+  _prefab: {fileID: 8069351938502896671, guid: a4358d0c54e402345b4ca71cf5b82d5f, type: 3}
+  _cooldown: 1
+  _minDamage: 10
+  _maxDamage: 20
+  _weaponTypeByRange: 1
+  _weaponTypeByGrab: 0

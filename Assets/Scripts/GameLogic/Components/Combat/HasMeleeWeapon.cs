@@ -1,7 +1,9 @@
 using Leopotam.Ecs;
 
-namespace Combat {
-    struct HasMeleeWeapon {
-        public EcsEntity Weapon;
-    }
+namespace GameLogic.Components.Combat
+{
+	struct HasMeleeWeapon
+	{
+		public EcsEntity Weapon;
+	}
 }

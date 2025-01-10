@@ -1,5 +1,6 @@
 using Leopotam.Ecs;
 
-namespace Common {
-    struct TargetToCameraFlag : IEcsIgnoreInFilter { }
+namespace GameLogic.Components.Common
+{
+	struct TargetToCameraFlag : IEcsIgnoreInFilter { }
 }

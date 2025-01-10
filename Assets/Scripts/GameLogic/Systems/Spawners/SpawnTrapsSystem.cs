@@ -1,22 +1,29 @@
-using Combat;
-using Common;
+using GameLogic.Components.Combat;
+using GameLogic.Components.Common;
 using GameLogic.UnityComponents;
 using Leopotam.Ecs;
-using Traps;
+using GameLogic.Components.Spawners;
 using UnityEngine;
+using GameLogic.Models;
+using GameLogic.Components.Traps;
 
-namespace Spawners {
-    sealed class SpawnTrapsSystem : IEcsInitSystem {
-        // auto-injected fields.
-        readonly EcsWorld world = null;
-        private SceneData sceneData;
+namespace GameLogic.Systems.Spawners
+{
+	sealed class SpawnTrapsSystem : IEcsInitSystem
+	{
+		// auto-injected fields.
+		readonly EcsWorld _world = null;
+		private SceneData _sceneData;
 
-        public void Init () {
-			if (sceneData.spawnTrapPoints.Length == 0)
+		public void Init ()
+		{
+			if (_sceneData.spawnTrapPoints.Length == 0)
 				return;
-			foreach (TrapPoint trapPoint in sceneData.spawnTrapPoints) {
-				EcsEntity trap = world.NewEntity ();
-				trap.Get<SpawnPrefab> () = new SpawnPrefab {
+			foreach (TrapPoint trapPoint in _sceneData.spawnTrapPoints)
+			{
+				EcsEntity trap = _world.NewEntity ();
+				trap.Get<SpawnPrefab> () = new SpawnPrefab
+				{
 					Prefab = trapPoint.Data.Prefab,
 					Position = trapPoint.transform.position,
 					Rotation = Quaternion.identity,
@@ -29,5 +36,5 @@ namespace Spawners {
 					trap.Get<SingleUseFlag> ();
 			}
 		}
-    }
+	}
 }

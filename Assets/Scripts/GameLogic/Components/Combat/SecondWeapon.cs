@@ -1,8 +1,10 @@
-using Leopotam.Ecs;
+п»їusing Leopotam.Ecs;
 
-namespace Combat {
-    // Для парного оружия
-    public struct SecondWeapon {
-        public EcsEntity Value;
-    }
+namespace GameLogic.Components.Combat
+{
+	// Р”Р»СЏ РїР°СЂРЅРѕРіРѕ РѕСЂСѓР¶РёСЏ
+	public struct SecondWeapon
+	{
+		public EcsEntity Value;
+	}
 }

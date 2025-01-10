@@ -1,19 +1,29 @@
+using GameLogic.Components.Common;
 using Leopotam.Ecs;
 using UnityEngine;
 
-namespace Common {
-	sealed class CooldownSystem : IEcsRunSystem {
+namespace GameLogic.Systems.Common
+{
+	sealed class CooldownSystem : IEcsRunSystem
+	{
 		// auto-injected fields.
-		private EcsFilter<Cooldown> cooldownFilter = null;
+		private EcsFilter<Cooldown> _cooldownFilter = null;
 
-		void IEcsRunSystem.Run () {
-			foreach (int index in cooldownFilter) {
-				float cooldownTime = cooldownFilter.Get1 (index).Value;
+		void IEcsRunSystem.Run ()
+		{
+			foreach (int index in _cooldownFilter)
+			{
+				float cooldownTime = _cooldownFilter.Get1 (index).Value;
 				cooldownTime -= Time.deltaTime;
+
 				if (cooldownTime <= 0)
-					cooldownFilter.GetEntity (index).Del<Cooldown> ();
+				{
+					_cooldownFilter.GetEntity (index).Del<Cooldown> ();
+				}					
 				else
-					cooldownFilter.Get1 (index).Value = cooldownTime;
+				{
+					_cooldownFilter.Get1 (index).Value = cooldownTime;
+				}					
 			}
 		}
 	}

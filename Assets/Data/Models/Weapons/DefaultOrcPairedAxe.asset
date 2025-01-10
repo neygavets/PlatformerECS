@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0447cc7f6114b4c4288235160fcb49ef, type: 3}
   m_Name: DefaultOrcPairedAxe
   m_EditorClassIdentifier: 
-  prefab: {fileID: 433804507081561890, guid: dfdd901e70f21ed4aa1eb3a2efba6639, type: 3}
-  cooldown: 0.1
-  minDamage: 30
-  maxDamage: 40
-  weaponTypeByRange: 0
-  weaponTypeByGrab: 2
+  _prefab: {fileID: 433804507081561890, guid: dfdd901e70f21ed4aa1eb3a2efba6639, type: 3}
+  _cooldown: 1
+  _minDamage: 20
+  _maxDamage: 30
+  _weaponTypeByRange: 0
+  _weaponTypeByGrab: 2

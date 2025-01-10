@@ -1,5 +1,6 @@
 using Leopotam.Ecs;
 
-namespace Input {
-    struct AttackInputEvent : IEcsIgnoreInFilter { }
+namespace GameLogic.Components.Input
+{
+	struct AttackInputEvent : IEcsIgnoreInFilter { }
 }

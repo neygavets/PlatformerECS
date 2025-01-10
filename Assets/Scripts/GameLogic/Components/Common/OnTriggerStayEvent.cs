@@ -1,7 +1,9 @@
 using UnityEngine;
 
-namespace Common {
-    public struct OnTriggerStayEvent {
-        public Collider2D Value;
-    }
+namespace GameLogic.Components.Common
+{
+	public struct OnTriggerStayEvent
+	{
+		public Collider2D Value;
+	}
 }

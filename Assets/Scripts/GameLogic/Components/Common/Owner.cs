@@ -1,7 +1,9 @@
 using Leopotam.Ecs;
 
-namespace Common {
-    struct Owner {
-        public EcsEntity Value;
-    }
+namespace GameLogic.Components.Common
+{
+	struct Owner
+	{
+		public EcsEntity Value;
+	}
 }

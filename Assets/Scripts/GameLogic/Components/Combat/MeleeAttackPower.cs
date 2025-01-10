@@ -1,5 +1,7 @@
-namespace Combat {
-    public struct MeleeAttackPower {
-        public float Value;
-    }
+namespace GameLogic.Components.Combat
+{
+	public struct MeleeAttackPower
+	{
+		public float Value;
+	}
 }

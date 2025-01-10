@@ -1,25 +1,31 @@
-using Common;
+п»їusing GameLogic.Components.Common;
+using GameLogic.Models.Characters;
 using Leopotam.Ecs;
 using UnityEngine;
+using GameLogic.Components.Movements;
 
-namespace Movements {
-	sealed class HorizontalMoveSystem : IEcsRunSystem {
+namespace GameLogic.Systems.Movements
+{
+	sealed class HorizontalMoveSystem : IEcsRunSystem
+	{
 		// auto-injected fields.		
-		private EcsFilter<HorizontalMovingFlag, Velocity, Rigidbody2DLink, MotionConfigLink> movableObjectFilter = null;
+		private EcsFilter<HorizontalMovingFlag, Velocity, Rigidbody2DLink, MotionConfigLink> _movableObjectFilter = null;
 
-		void IEcsRunSystem.Run () {
-			foreach (int i in movableObjectFilter) {
-				ref EcsEntity entity = ref movableObjectFilter.GetEntity (i);
-				MotionConfig config = movableObjectFilter.Get4 (i).Value;
-				ref Rigidbody2D body = ref movableObjectFilter.Get3 (i).Value;
-				
-				// Берем текущую скорость тела
+		void IEcsRunSystem.Run ()
+		{
+			foreach (int i in _movableObjectFilter)
+			{
+				ref EcsEntity entity = ref _movableObjectFilter.GetEntity (i);
+				MotionConfig config = _movableObjectFilter.Get4 (i).Value;
+				ref Rigidbody2D body = ref _movableObjectFilter.Get3 (i).Value;
+
+				// Р‘РµСЂРµРј С‚РµРєСѓС‰СѓСЋ СЃРєРѕСЂРѕСЃС‚СЊ С‚РµР»Р°
 				Vector2 velocity = body.velocity;
-				// Добавляем к текущей скорости ускорение
-				velocity.x += movableObjectFilter.Get2 (i).Value * config.MoveAcceleration * Time.fixedDeltaTime;
-				// Ограничиваем скорость максимальными значениями из настроек
+				// Р”РѕР±Р°РІР»СЏРµРј Рє С‚РµРєСѓС‰РµР№ СЃРєРѕСЂРѕСЃС‚Рё СѓСЃРєРѕСЂРµРЅРёРµ
+				velocity.x += _movableObjectFilter.Get2 (i).Value * config.MoveAcceleration * Time.fixedDeltaTime;
+				// РћРіСЂР°РЅРёС‡РёРІР°РµРј СЃРєРѕСЂРѕСЃС‚СЊ РјР°РєСЃРёРјР°Р»СЊРЅС‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё РёР· РЅР°СЃС‚СЂРѕРµРє
 				velocity.x = Mathf.Clamp (velocity.x, -config.MaxMoveSpeed, config.MaxMoveSpeed);
-				// Отдаем телу новую скорость
+				// РћС‚РґР°РµРј С‚РµР»Сѓ РЅРѕРІСѓСЋ СЃРєРѕСЂРѕСЃС‚СЊ
 				body.velocity = velocity;
 				entity.Get<HorizontalSpeedAnimation> ().Value = velocity.x;
 			}

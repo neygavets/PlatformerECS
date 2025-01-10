@@ -1,5 +1,7 @@
-namespace Movements {
-    struct DashState {
-        public float Duration;
-    }
+namespace GameLogic.Components.Movements
+{
+	struct DashState
+	{
+		public float Duration;
+	}
 }

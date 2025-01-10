@@ -1,32 +1,41 @@
-using Common;
+п»їusing GameLogic.Components.Common;
+using GameLogic.Models.Characters;
 using Leopotam.Ecs;
 using UnityEngine;
+using GameLogic.Components.Movements;
 
-namespace Movements {
-	sealed class VerticalMoveSystem : IEcsRunSystem {
+namespace GameLogic.Systems.Movements
+{
+	sealed class VerticalMoveSystem : IEcsRunSystem
+	{
 		// auto-injected fields.
-		private EcsFilter<VerticalMovingFlag, Velocity, Rigidbody2DLink, MotionConfigLink> movableObjectFilter = null;
+		private EcsFilter<VerticalMovingFlag, Velocity, Rigidbody2DLink, MotionConfigLink> _movableObjectFilter = null;
 
-		void IEcsRunSystem.Run () {
-			foreach (int i in movableObjectFilter) {
-				ref EcsEntity entity = ref movableObjectFilter.GetEntity (i);
-				MotionConfig config = movableObjectFilter.Get4 (i).Value;
-				ref Rigidbody2D body = ref movableObjectFilter.Get3 (i).Value;
-				float input = movableObjectFilter.Get2 (i).Value;
+		void IEcsRunSystem.Run ()
+		{
+			foreach (int i in _movableObjectFilter)
+			{
+				ref EcsEntity entity = ref _movableObjectFilter.GetEntity (i);
+				MotionConfig config = _movableObjectFilter.Get4 (i).Value;
+				ref Rigidbody2D body = ref _movableObjectFilter.Get3 (i).Value;
+				float input = _movableObjectFilter.Get2 (i).Value;
 
-				// Берем текущую скорость тела
+				// Р‘РµСЂРµРј С‚РµРєСѓС‰СѓСЋ СЃРєРѕСЂРѕСЃС‚СЊ С‚РµР»Р°
 				Vector2 velocity = body.velocity;
-				if (input == 0) {
-					//если ввода нет, остановиться (убираем движение по инерции)
+				if (input == 0)
+				{
+					//РµСЃР»Рё РІРІРѕРґР° РЅРµС‚, РѕСЃС‚Р°РЅРѕРІРёС‚СЊСЃСЏ (СѓР±РёСЂР°РµРј РґРІРёР¶РµРЅРёРµ РїРѕ РёРЅРµСЂС†РёРё)
 					velocity = Vector2.zero;
-				} else {
-					// Добавляем к текущей скорости ускорение
+				}
+				else
+				{
+					// Р”РѕР±Р°РІР»СЏРµРј Рє С‚РµРєСѓС‰РµР№ СЃРєРѕСЂРѕСЃС‚Рё СѓСЃРєРѕСЂРµРЅРёРµ
 					velocity.y += input * body.transform.localScale.x * config.MoveAcceleration * Time.fixedDeltaTime;
-					// Ограничиваем скорость максимальными значениями из настроек
+					// РћРіСЂР°РЅРёС‡РёРІР°РµРј СЃРєРѕСЂРѕСЃС‚СЊ РјР°РєСЃРёРјР°Р»СЊРЅС‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё РёР· РЅР°СЃС‚СЂРѕРµРє
 					velocity.y = Mathf.Clamp (velocity.y, -config.MaxMoveSpeed, config.MaxMoveSpeed);
 					velocity.x = 0.0f;
-				}				
-				// Отдаем телу новую скорость
+				}
+				// РћС‚РґР°РµРј С‚РµР»Сѓ РЅРѕРІСѓСЋ СЃРєРѕСЂРѕСЃС‚СЊ
 				body.velocity = velocity;
 				entity.Get<VerticalSpeedAnimation> ().Value = velocity.y;
 			}

@@ -1,32 +1,42 @@
-using Combat;
-using Common;
+п»їusing GameLogic.Components.Combat;
+using GameLogic.Components.Common;
+using GameLogic.Models.Weapons;
 using Leopotam.Ecs;
+using GameLogic.Components.Spawners;
 using UnityEngine;
+using GameLogic.Components.Characters;
 
-namespace Spawners {
-    sealed class SpawnWeaponSystem : IEcsRunSystem {
-        // auto-injected fields.
-        private EcsWorld world = null;
-		private EcsFilter<TakeWeapon> spawnFilter = null;
+namespace GameLogic.Systems.Spawners
+{
+	sealed class SpawnWeaponSystem : IEcsRunSystem
+	{
+		// auto-injected fields.
+		private EcsWorld _world = null;
+		private EcsFilter<TakeWeapon> _spawnFilter = null;
 
-		public void Run () {
-			foreach (int index in spawnFilter) {
-				EcsEntity parent = spawnFilter.GetEntity (index);
-				WeaponData data = parent.Get<TakeWeapon>().Value;				
+		public void Run ()
+		{
+			foreach (int index in _spawnFilter)
+			{
+				EcsEntity parent = _spawnFilter.GetEntity (index);
+				WeaponData data = parent.Get<TakeWeapon> ().Value;
 				Transform linkPoint = parent.Get<HandGrabPointsLink> ().Right;
-				EcsEntity weapon = world.NewEntity ();
+				EcsEntity weapon = _world.NewEntity ();
 				weapon.Get<Owner> () = new Owner { Value = parent };
-				weapon.Get<SpawnPrefab> () = new SpawnPrefab {
+				weapon.Get<SpawnPrefab> () = new SpawnPrefab
+				{
 					Prefab = data.Prefab,
 					Position = linkPoint.position,
 					Rotation = Quaternion.identity,
 					Parent = linkPoint
 				};
-				// Для парного оружия создаем второе оружие и связываем его с основным
-				if (data.WeaponTypeByGrab == WeaponTypesByGrab.Paired) {
-					EcsEntity secondWeapon = world.NewEntity ();
+				// Р”Р»СЏ РїР°СЂРЅРѕРіРѕ РѕСЂСѓР¶РёСЏ СЃРѕР·РґР°РµРј РІС‚РѕСЂРѕРµ РѕСЂСѓР¶РёРµ Рё СЃРІСЏР·С‹РІР°РµРј РµРіРѕ СЃ РѕСЃРЅРѕРІРЅС‹Рј
+				if (data.WeaponTypeByGrab == WeaponTypesByGrab.Paired)
+				{
+					EcsEntity secondWeapon = _world.NewEntity ();
 					linkPoint = parent.Get<HandGrabPointsLink> ().Left;
-					secondWeapon.Get<SpawnPrefab> () = new SpawnPrefab {
+					secondWeapon.Get<SpawnPrefab> () = new SpawnPrefab
+					{
 						Prefab = data.Prefab,
 						Position = linkPoint.position,
 						Rotation = Quaternion.identity,
@@ -42,7 +52,7 @@ namespace Spawners {
 				if (data.WeaponTypeByRange == WeaponTypesByRange.Range)
 					parent.Get<HasRangeWeapon> ().Weapon = weapon;
 
-				spawnFilter.GetEntity(index).Del<TakeWeapon> ();
+				_spawnFilter.GetEntity (index).Del<TakeWeapon> ();
 			}
 		}
 	}

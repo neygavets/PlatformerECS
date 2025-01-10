@@ -1,5 +1,6 @@
 using Leopotam.Ecs;
 
-namespace Movements {
-    struct GrabStairStateFlag : IEcsIgnoreInFilter { }
+namespace GameLogic.Components.Movements
+{
+	struct GrabStairStateFlag : IEcsIgnoreInFilter { }
 }

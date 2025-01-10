@@ -1,7 +1,9 @@
 using UnityEngine;
 
-namespace Common {
-    public struct AnimatorLink {
-        public Animator Value;
-    }
+namespace GameLogic.Components.Common
+{
+	public struct AnimatorLink
+	{
+		public Animator Value;
+	}
 }

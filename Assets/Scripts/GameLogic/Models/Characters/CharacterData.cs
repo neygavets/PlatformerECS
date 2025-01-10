@@ -1,20 +1,37 @@
-using Combat;
+ï»¿using GameLogic.Models.Weapons;
 using UnityEngine;
 
-namespace Characters {
-	public class CharacterData : ScriptableObject {
-		[SerializeField] GameObject prefab;
-		[SerializeField] WeaponData weapon;
-		[SerializeField] [Min (1)] [Tooltip ("Âëèÿåò íà êîëè÷åñòâî çäîðîâüÿ")] int stamina;
-		[SerializeField] [Min (0)] [Tooltip ("Âëèÿåò íà ñèëó àòàêè áëèæíåãî áîÿ")] int strength;
-		[SerializeField] [Min (0)] [Tooltip ("Âëèÿåò íà ñèëó àòàêè äàëüíåãî áîÿ")] int agility;
-		[SerializeField] [Min (0)] [Tooltip ("Âëèÿåò íà ñèëó çàêëèíàíèé")] int intellect;
+namespace GameLogic.Models.Characters
+{
+	public class CharacterData : ScriptableObject
+	{
+		[SerializeField]
+		private GameObject _prefab;
 
-		public GameObject Prefab { get => prefab; set => prefab = value; }
-		public WeaponData Weapon { get => weapon; set => weapon = value; }
-		public int Stamina { get => stamina; set => stamina = value; }
-		public int Strength { get => strength; set => strength = value; }
-		public int Agility { get => agility; set => agility = value; }
-		public int Intellect { get => intellect; set => intellect = value; }
+		[SerializeField]
+		private WeaponData _weapon;
+
+		[SerializeField][Min (1)][Tooltip ("Ð’Ð»Ð¸ÑÐµÑ‚ Ð½Ð° ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð·Ð´Ð¾Ñ€Ð¾Ð²ÑŒÑ")]
+		private int _stamina;
+
+		[SerializeField][Min (0)][Tooltip ("Ð’Ð»Ð¸ÑÐµÑ‚ Ð½Ð° ÑÐ¸Ð»Ñƒ Ð°Ñ‚Ð°ÐºÐ¸ Ð±Ð»Ð¸Ð¶Ð½ÐµÐ³Ð¾ Ð±Ð¾Ñ")]
+		private int _strength;
+
+		[SerializeField][Min (0)][Tooltip ("Ð’Ð»Ð¸ÑÐµÑ‚ Ð½Ð° ÑÐ¸Ð»Ñƒ Ð°Ñ‚Ð°ÐºÐ¸ Ð´Ð°Ð»ÑŒÐ½ÐµÐ³Ð¾ Ð±Ð¾Ñ")]
+		private int _agility;
+
+		[SerializeField][Min (0)][Tooltip ("Ð’Ð»Ð¸ÑÐµÑ‚ Ð½Ð° ÑÐ¸Ð»Ñƒ Ð·Ð°ÐºÐ»Ð¸Ð½Ð°Ð½Ð¸Ð¹")]
+		private int _intellect;
+
+		[SerializeField][Min (0)][Tooltip ("Ð’Ð»Ð¸ÑÐµÑ‚ Ð½Ð° Ð·Ð°Ñ‰Ð¸Ñ‚Ñƒ Ð¾Ñ‚ Ñ„Ð¸Ð·Ð¸Ñ‡ÐµÑÐºÐ¾Ð³Ð¾ ÑƒÑ€Ð¾Ð½Ð°")]
+		private int _armor;
+
+		public GameObject Prefab { get => _prefab; set => _prefab = value; }
+		public WeaponData Weapon { get => _weapon; set => _weapon = value; }
+		public int Stamina { get => _stamina; set => _stamina = value; }
+		public int Strength { get => _strength; set => _strength = value; }
+		public int Agility { get => _agility; set => _agility = value; }
+		public int Intellect { get => _intellect; set => _intellect = value; }
+		public int Armor { get => _armor; set => _armor = value; }
 	}
 }

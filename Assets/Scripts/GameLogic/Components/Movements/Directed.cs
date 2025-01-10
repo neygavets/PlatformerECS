@@ -1,5 +1,7 @@
-namespace Movements {
-    struct Directed {
-        public bool isFlipped;
-    }
+namespace GameLogic.Components.Movements
+{
+	struct Directed
+	{
+		public bool isFlipped;
+	}
 }

@@ -1,4 +1,4 @@
-﻿using Combat;
+﻿using GameLogic.Components.Combat;
 using Leopotam.Ecs;
 using UnityEngine;
 
